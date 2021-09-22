@@ -11,13 +11,13 @@ void setup() {
   img1 = loadImage("drawingboard.png");
   img2 = loadImage("brush.png");
   
-  v1 = new PVector(200, 250);
-  v2 = new PVector(250, 200);
+  v1 = new PVector(800, 0);
+  v2 = new PVector(388, 70);
   
   s = createShape();
   s.beginShape();
   s.stroke(245,150,235);
-  s.fill(150,245,215);
+  s.fill(95,220,240);
   s.vertex(v1.x, v1.y);
   s.vertex(v2.x, v2.y);
   s.vertex(0, 0);
