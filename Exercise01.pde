@@ -1,6 +1,8 @@
 PImage img1, img2;
 PFont font;
 String message1 = "DRAWING";
+PVector v1, v2;
+PShape s;
 
 void setup() {
   size(800, 600, P2D);
@@ -8,6 +10,18 @@ void setup() {
   
   img1 = loadImage("drawingboard.png");
   img2 = loadImage("brush.png");
+  
+  v1 = new PVector(200, 250);
+  v2 = new PVector(250, 200);
+  
+  s = createShape();
+  s.beginShape();
+  s.stroke(245,150,235);
+  s.fill(150,245,215);
+  s.vertex(v1.x, v1.y);
+  s.vertex(v2.x, v2.y);
+  s.vertex(0, 0);
+  s.endShape();
   
   background(255, 255, 255);
 }
@@ -29,6 +43,8 @@ void draw() {
   strokeWeight(1);
   line(mouseX, mouseY, pmouseX, pmouseY);
   rect(mouseX, mouseY, 55, 10);
+  
+  shape(s);
 }
   
   
