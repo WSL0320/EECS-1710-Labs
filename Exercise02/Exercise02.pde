@@ -3,6 +3,7 @@ float x1, y1, x2, y2, x3, y3;
 float speedX1, speedX2, speedX3;
 float mouseXVal = 0;
 float mouseYVal = 0;
+boolean morning = true; 
 
 void setup() {
   size(1080, 720, P2D);
@@ -31,17 +32,23 @@ void draw() {
   surface.setTitle("" + frameRate);
   
   noTint();
-  image(nightfrontyard, x1, y1, nightfrontyard.width * (height / nightfrontyard.height), height);
 
   tint(255, speedX3);
-  if (speedX3 > 0){
+if (morning) {
   speedX3--;
- }
-  else if (speedX3 < 0){
+}
+if (!morning){
   speedX3++;
- }
+}
+if (speedX3 <=1){
+  morning = !morning;
+}
+if (speedX3 >255){
+  morning =!morning;
+}
+   image(nightfrontyard, x1, y1, nightfrontyard.width * (height / nightfrontyard.height), height);
+
   image(garden, x1, y1, garden.width * (height / garden.height), height);
-  
   x2 -= speedX1;
   noTint();
   image(zombie, x2+random(-3, 5), y2+random(-3, 5), 112, 147);
@@ -63,5 +70,4 @@ void draw() {
  }
   noTint();
   image(peashoot, mouseXVal, mouseYVal, 100, 100);
-
 }
