@@ -12,7 +12,7 @@ void setup() {
   img2 = loadImage("brush.png");
   
   v1 = new PVector(800, 0);
-  v2 = new PVector(388, 70);
+  v2 = new PVector(389, 70);
   
   s = createShape();
   s.beginShape();
