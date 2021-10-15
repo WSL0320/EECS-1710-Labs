@@ -1,16 +1,25 @@
-PImage ocean, fish;
+PImage ocean, fish, fish1, fish2, fishbone, shark;
 PVector position, target;
 boolean isescaped = false;
+int hunger = 500;
+int speedX1 =5;
+//int endTime = 5000;
 void setup() {
   size(1080, 720, P2D);
   
   position = new PVector(width/2, height/2);
   target = new PVector(random(width), random(height));
   
-  ocean = loadImage("7.jpg");
-  fish = loadImage("fish.png");
-  fish.resize(fish.width/10, fish.height/10);
-  
+  ocean = loadImage("ocean.jpg");
+  fish1 = loadImage("fish.png");
+  fish1.resize(fish1.width/15, fish1.height/15);
+  fish2 = loadImage("fish2.png");
+  fish2.resize(fish1.width, fish1.height);
+  shark = loadImage("shark.png");
+  shark.resize(shark.width/3, shark.height/3);
+  fishbone = loadImage("fish3.png");
+  fishbone.resize(shark.width/4, shark.height/4);
+  fish = fish1;
   imageMode(CENTER);
 }
 
@@ -21,13 +30,27 @@ void draw() {
   isescaped = position.dist(mousePos) < 100;
   
   if (isescaped) {
+    fish = fish2;
+    //hunger = millis();    
     position = position.lerp(target, 0.08);
-    if (position.dist(target) < 5) {
-      target = new PVector(random(width), random(height));
+    int hungerclock = millis()%1000;
+    if (hungerclock > 90) {
+      hunger -= speedX1;
+      print(hunger+"\n");
     }
+   
+    if (position.dist(target) < 5) {
+      target = new PVector(random(width), random(height));     
+    }
+  } else if ( !isescaped && hunger <= 0 ) {
+    shark = fishbone;
+    //mosX -= speedX1, mosY -= speedX1;
+  } else {
+  fish = fish1;
   }
  image(fish, position.x, position.y);
+ int mosX = mouseX+70, mosY= mouseY-15;
+ image(shark, mosX, mosY);
  
 }
-  
   
