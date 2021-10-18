@@ -1,4 +1,5 @@
 Nemo nemo;
+
 PVector sharkPosition;
 int speedX1;
 int speedX2;
@@ -9,20 +10,15 @@ void setup() {
   nemo = new Nemo();
 }
 void draw() {
-   sharkPosition = sharkPosition.lerp(nemo.position, 0.01);
-   
-   if ( nemo.hunger <=0) {
-     sharkPosition = new PVector(speedX2, speedX1 );
-     speedX1 ++;
-   }
-   else {
-   speedX1 = int(sharkPosition.y);
-   speedX2 = int(sharkPosition.x);
-   
-   }
-     
+  sharkPosition = sharkPosition.lerp(nemo.position, 0.01);
 
-
+  if (nemo.hunger <=0) {
+    sharkPosition = new PVector(speedX2, speedX1);
+    speedX1 ++;
+  } else {
+    speedX1 = int(sharkPosition.y);
+    speedX2 = int(sharkPosition.x);
+  }
 
   nemo.draw();
 }
