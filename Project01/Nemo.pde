@@ -3,9 +3,10 @@ class Nemo {
   PImage ocean, fish, fish1, fish2, fishbone, shark;
   PVector position, target;
   boolean isescaped = false;
-  int hunger = 500;
+  int hunger = 1000;
   int speedX1 =5;
   //int endTime = 5000;
+  
 
   Nemo() {
     position = new PVector(width/2, height/2);
@@ -27,8 +28,8 @@ class Nemo {
     imageMode(CENTER);
     image(ocean, width/2, height/2, width, height);
 
-    PVector mousePos = new PVector(mouseX, mouseY);
-    isescaped = position.dist(mousePos) < 100;
+   //PVector mousePos = new PVector(mouseX, mouseY);
+    isescaped = position.dist(sharkPosition) < 350;
 
     if (isescaped) {
       fish = fish2;
@@ -50,7 +51,7 @@ class Nemo {
       fish = fish1;
     }
     image(fish, position.x, position.y);
-    int mosX = mouseX+70, mosY= mouseY-15;
-    image(shark, mosX, mosY);
+    //int mosX = mouseX+70, mosY= mouseY-15;
+    image(shark, sharkPosition.x, sharkPosition.y);
   }
 }
