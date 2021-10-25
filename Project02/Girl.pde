@@ -1,9 +1,12 @@
 class Girl {
   
   PVector position;
+  float speed;
+  PImage img;
+  
 
   Girl(float x, float y) {
-    position = new PVector(x, y);
+    position = new PVector(x, y); 
   }
 
   void update() {
@@ -14,6 +17,7 @@ class Girl {
   }
 
   void draw() {
+
   }
 
 
