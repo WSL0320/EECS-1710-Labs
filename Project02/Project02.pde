@@ -12,7 +12,7 @@ float speed = 0.03;
 void setup() {
   size(925, 500, P2D);
   
- bg1 = new Background("1.jpg", delta*2, new PVector(0, 0));
+ bg1 = new Background("bg1.jpg", delta*2, new PVector(0, 0));
   
   //girl = new Girl(this, "rungirl.gif");
   //girl.loop();
