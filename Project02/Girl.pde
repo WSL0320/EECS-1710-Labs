@@ -9,6 +9,9 @@ class Girl {
   void update() {
     //TO DO  
   }
+  
+  void jump() {
+  }
 
   void draw() {
   }
