@@ -5,6 +5,7 @@ int speedX1;
 int speedX2;
 void setup() {
   size(1080, 720, P2D);
+
   sharkPosition = new PVector(width/2, height/2);
 
   nemo = new Nemo();

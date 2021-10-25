@@ -57,7 +57,7 @@ class Nemo {
     } else {
       fish = fish1;
     }
-   
+
     image(fish, position.x, position.y);
 
     image(shark, sharkPosition.x, sharkPosition.y);
