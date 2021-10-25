@@ -30,9 +30,7 @@ void setup() {
 
 void draw() {
   surface.setTitle("" + frameRate);
-  
-  noTint();
-
+    
   tint(255, speedX3);
 if (morning) {
   speedX3--;
@@ -46,7 +44,7 @@ if (speedX3 <=1){
 if (speedX3 >255){
   morning =!morning;
 }
-   image(nightfrontyard, x1, y1, nightfrontyard.width * (height / nightfrontyard.height), height);
+  image(nightfrontyard, x1, y1, nightfrontyard.width * (height / nightfrontyard.height), height);
 
   image(garden, x1, y1, garden.width * (height / garden.height), height);
   x2 -= speedX1;

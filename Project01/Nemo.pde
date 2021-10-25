@@ -52,13 +52,12 @@ class Nemo {
       }
     } else if ( !isescaped && hunger <= 0 ) {
       shark = fishbone;
+      fish = fish3;
+      position = position.lerp(fishfood, 0.03);
     } else {
       fish = fish1;
     }
-    if (!isescaped && hunger <= 0 ) {
-      fish = fish3;
-      position = position.lerp(fishfood, 0.04);
-    }
+   
     image(fish, position.x, position.y);
 
     image(shark, sharkPosition.x, sharkPosition.y);
