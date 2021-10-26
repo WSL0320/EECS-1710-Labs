@@ -1,37 +1,32 @@
 class Background {
-  
+
   PImage img;
-  PVector position;
   float bgspeed;
   float x, y;
 
-  Background(float x, float y) {
-    position = new PVector(x, y);
-    img = loadImage("bg.gif");
-    
+  Background(float tempX, float tempY) {
+    x = tempX;
+    y = tempY;
     bgspeed = 2;
   }
-  
+
   void update() {
-    if (x > width || x < 0) {
+    if (x < -910 || x > 0) {
       bgspeed *= -1;
     }
-    if (x > width) {
+    if (x < -910) {
       x = 0;
     }
-   
-    //if (position.x < width) {
-      //position.x += bgspeed;
-    //}  
   }
-  
+
   void draw() {
+    img = loadImage("bg.gif");
+    imageMode(CORNER);
     image(img, x, y);
-    image(img, x-910, y);
-     x += bgspeed;
-    //image(img, position.x, position.y);   
+    image(img, x+910, y);
+    x -= bgspeed;
   }
-  
+
   void run() {
     update();
     draw();
