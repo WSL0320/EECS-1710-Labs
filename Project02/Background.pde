@@ -9,15 +9,14 @@ class Background {
     position = new PVector(x, y);
     img = loadImage("bg.gif");
     
-    bgspeed = -0.5;
+    bgspeed = 2;
   }
   
   void update() {
-    if (x < width) {
-      x += bgspeed;
-      println(x);
+    if (x > width || x < 0) {
+      bgspeed *= -1;
     }
-    if (x < -100) {
+    if (x > width) {
       x = 0;
     }
    
@@ -28,6 +27,8 @@ class Background {
   
   void draw() {
     image(img, x, y);
+    image(img, x-910, y);
+     x += bgspeed;
     //image(img, position.x, position.y);   
   }
   
