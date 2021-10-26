@@ -1,55 +1,38 @@
 class Background {
-
-  float speed;
+  
   PImage img;
-  float spriteWidth;
-  float startX, endX;
-  PVector position, position2;
+  PVector position;
+  float bgspeed;
+  float x, y;
 
-  Background(PImage _img, float _speed, PVector _position) {
-    img = _img;
-    speed = _speed;
-    position = _position;
+  Background(float x, float y) {
+    position = new PVector(x, y);
+    img = loadImage("bg.gif");
     
-    init();
+    bgspeed = -0.5;
   }
   
-  Background(String _url, float _speed, PVector _position) {
-    img = loadImage(_url);
-    speed = _speed;
-    position = _position;
-    
-    init();
-  }
-  
-  void init() {
-    spriteWidth = img.width;
-    startX = position.x;
-    endX = startX - spriteWidth;
-    position2 = new PVector(startX + spriteWidth, 0);
-  }
- 
   void update() {
-    position.x -= speed;
-    
-    if (position.x < endX) {
-      position = new PVector(startX, position.y);
-    } else if (position.x > startX) {
-      position = new PVector(endX, position.y);
+    if (x < width) {
+      x += bgspeed;
+      println(x);
     }
+    if (x < -100) {
+      x = 0;
+    }
+   
+    //if (position.x < width) {
+      //position.x += bgspeed;
+    //}  
   }
   
   void draw() {
-    pushMatrix();
-    translate(position.x, position.y);
-    image(img, 0, 0);
-    image(img, position2.x, position2.y);
-    popMatrix();
+    image(img, x, y);
+    //image(img, position.x, position.y);   
   }
   
   void run() {
     update();
     draw();
   }
-
 }

@@ -1,34 +1,35 @@
 import gifAnimation.*;
 
-Background bg1;
+Background bg;
 Girl girl;
-Coin coin;
-Bat bat;
-float xPos, delta;
-float stopDelta = 0.5;
-float speed = 0.03;
 
+ArrayList<Coin> coins;
+ArrayList<Monster> bats;
+ArrayList<Monster> ghosts;
+
+float start;
+float floor;
+float gravity = 0.5;
+PFont font;
 
 void setup() {
-  size(925, 500, P2D);
+  size(910, 512, P2D);
+  start = 0;
+  floor = height-190;
   
- bg1 = new Background("bg1.jpg", delta*2, new PVector(0, 0));
+  bg = new Background(width, height);
+  girl = new Girl(start, floor); 
+  coins = new ArrayList<Coin>();
+  //bats = new ArrayList<Moster>();
+  //ghosts = new ArrayList<Moster>();
   
-  //girl = new Girl(this, "rungirl.gif");
-  //girl.loop();
-  //girl.play();
 }
 
 void draw() {
- imageMode(CORNER);
-  pushMatrix();
-  scale(height / bg0.img.height);
-  delta = abs(xPos-width/2) * speed;
-  if (mouseX < xPos) delta = -delta;
-  
-  if (xPos > width/3 && xPos < (width/3)*2 && delta > -stopDelta && delta < stopDelta) {
-    delta = 0;
-    bg1.speed = delta;  
-    bg1.run();
-    popMatrix();
+  bg.run();
+  girl.run();
+  for (int i=coins.size()-1; i>=0; i++) {
+    Coin coin = coins.get(i);
+    coin.run();
+  }
 }
