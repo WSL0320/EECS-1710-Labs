@@ -2,10 +2,9 @@ import gifAnimation.*;
 Gif gif;
 Background bg;
 Girl girl;
-Coin[] coins = new Coin[3];
 
-ArrayList<Monster> bats;
-ArrayList<Monster> ghosts;
+Coin[] coins = new Coin[3];
+Monster[] bats = new Monster[1];
 
 float start;
 float floor;
@@ -30,9 +29,10 @@ void setup() {
 
   for (int i = 0; i < total; i++) {
     coins[i] = new Coin(width, 80);
-  }
-  //bats = new ArrayList<Moster>(width, 80);
-  //ghosts = new ArrayList<Moster>(width, 80);
+  }  
+  for (int i = 0; i < bats.length; i++) {
+    bats[i] = new Monster(width, 80);
+  }  
 }
 
 void draw() {
@@ -44,4 +44,7 @@ void draw() {
   for (int i = 0; i < total; i++) {
     coins[i].run();
   }
+  for (int i = 0; i < bats.length; i++) {
+    bats[i].run();
+  }  
 }

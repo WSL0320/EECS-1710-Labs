@@ -9,7 +9,7 @@ class Coin {
     position = new PVector(x, y);
     img = loadImage("coin.gif");
 
-    speed = speed + random(1, 5);
+    speed = speed + random(2, 8);
   }
 
   void update() {
@@ -18,7 +18,7 @@ class Coin {
       position.x = width;
       position.y = random(150, 300);
     }
-    if(position.dist(girl.position) < 5) {      
+    if(position.dist(girl.position) < 50) {      
       pick = false;
     }    
   }
