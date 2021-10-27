@@ -3,8 +3,7 @@ Gif gif;
 Background bg;
 Girl girl;
 
-Coin[] coins = new Coin[3];
-
+ArrayList<Coin> coins;
 ArrayList<Monster> bats;
 
 float start;
@@ -22,7 +21,7 @@ void setup() {
   size(910, 512, P2D);
   start = 0;
   floor = height-190;
-  total = 3;
+  total = 10;
 
   gif = new Gif(this, "rungirl.gif");
   gif.loop();
@@ -31,27 +30,30 @@ void setup() {
   bg = new Background(start, start);
   girl = new Girl(start, floor);
 
-  for (int i = 0; i < total; i++) {
-    coins[i] = new Coin(width, 80);
-  }
+  coins = new ArrayList<Coin>();
   bats = new ArrayList<Monster>();
 }
 
 void draw() {
   bg.run();
   girl.run();
+
   int t = millis();
   if (t > markTime + batInterval ) {
+    coins.add(new Coin(width, 80));
     bats.add(new Monster());
     markTime = t;
+  }
+  for (Coin coin : coins) {
+    coin.run();
   }
   for (Monster monster : bats) {
     monster.run();
     if (girl.position.dist(monster.position) < catchRange) {
-      girl.alive = false;
+      background(0);
+      textSize(50);
+      text("GAME OVER", width/2-100, height/2);
+      fill(random(255));
     }
-  }
-  for (int i = 0; i < total; i++) {
-    coins[i].run();
   }
 }

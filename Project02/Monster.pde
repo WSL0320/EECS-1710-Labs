@@ -5,11 +5,11 @@ class Monster {
   PVector position, target;
   float speed = 0.01;
   float tempX = 612;
-  //float tempY = 150;
+  float tempY = 0;
   
   Monster() {
     float x1, x2;
-    float y = floor;
+    float y = random(tempY, floor);
     float pickSide =random(1);
     if (pickSide < 0.5) {
       isLeft = true;
@@ -24,8 +24,7 @@ class Monster {
     position= new PVector(x1, y);
     target= new PVector(x2, y);
     
-    bats = loadImage("ghost.gif");
-    ghosts = loadImage("ghost.gif");
+    bats = loadImage("bat.gif");
   }
   
   void update() {
@@ -34,7 +33,6 @@ class Monster {
 
   void draw() {    
     image(bats, position.x, position.y, 130, 130);
-    //image(ghosts, 0, floor, 130, 130);
   }
 
   void run() {
