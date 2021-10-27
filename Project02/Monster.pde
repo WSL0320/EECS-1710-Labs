@@ -1,6 +1,6 @@
 class Monster {
   
-  PImage img1, img2;
+  PImage bats, ghosts;
   PVector position;
   float speed = 50;
   int maktime = 0;
@@ -8,17 +8,16 @@ class Monster {
 
   Monster(float x, float y) {
     position = new PVector(x, y);
-    img1 = loadImage("bat.gif");
-    img2 = loadImage("ghost.gif");
+    bats = loadImage("bat.gif");
+    ghosts = loadImage("ghost.gif");
   }
 
-  void update() {
-    //TO DO  
+  void update() {  
   }
 
   void draw() {
-    image(img1, position.x, position.y, 120, 120);
-    image(img2, position.x, position.y, 120, 120);
+    image(bats, position.x, position.y, 100, 100);
+    image(ghosts, position.x, position.y, 100, 100);
   }
 
   void run() {

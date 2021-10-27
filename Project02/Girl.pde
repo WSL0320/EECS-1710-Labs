@@ -4,35 +4,38 @@ class Girl {
   PVector position, target;
   PImage img;
   float speed;
+  float tempX, tempY;
+  float jumpHeight = 100;
 
   Girl(float x, float y) {
     position = new PVector(x, y);
-    target =  new PVector(x, 120);
-
+    target =  new PVector(x, jumpHeight);
     img = loadImage("rungirl.gif");
-
-    speed = 1;
-    speed = speed + gravity;
+    speed = 2;
   }
 
   void update() {
     if (mouseX < width) {
       mouseX += speed;
     }
-    if (position.y > height) {
-      speed = speed * -0.95;
-      position.y = height;
+    if (position.y == jumpHeight) {
+      isJump = true;
+      position.y += speed;      
+    } else {
+      isJump = false;
+      //position.y = floor;
     }
   }
 
   void jump() {
-    position = position.lerp(target, 0.5);
+    if (!isJump) {
+      position = position.lerp(target, 0.5);
+    }
   }
-
+ 
   void draw() {
     image(img, position.x, position.y, 120, 120);
     position.x = mouseX;
-    position.y = position.y+speed;
   }
 
   void run() {
