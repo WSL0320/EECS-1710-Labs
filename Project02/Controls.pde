@@ -1,5 +1,3 @@
-void keyPressed() {
-  if (key == ' ') {
-    girl.jump();
-  }
+void mousePressed() {
+  girl.jump();
 }

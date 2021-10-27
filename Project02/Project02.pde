@@ -4,13 +4,17 @@ Background bg;
 Girl girl;
 
 Coin[] coins = new Coin[3];
-Monster[] bats = new Monster[1];
+
+ArrayList<Monster> bats;
 
 float start;
 float floor;
 float gravity = 0.98;
 
 int total;
+int markTime = 0;
+int batInterval = 1000;
+int catchRange = 30;
 
 boolean isJump = false;
 
@@ -29,22 +33,25 @@ void setup() {
 
   for (int i = 0; i < total; i++) {
     coins[i] = new Coin(width, 80);
-  }  
-  for (int i = 0; i < bats.length; i++) {
-    bats[i] = new Monster(width, 80);
-  }  
+  }
+  bats = new ArrayList<Monster>();
 }
 
 void draw() {
-  imageMode(CENTER);
-  image(gif, mouseX, mouseY, 100, 100);
-
   bg.run();
   girl.run();
+  int t = millis();
+  if (t > markTime + batInterval ) {
+    bats.add(new Monster());
+    markTime = t;
+  }
+  for (Monster monster : bats) {
+    monster.run();
+    if (girl.position.dist(monster.position) < catchRange) {
+      girl.alive = false;
+    }
+  }
   for (int i = 0; i < total; i++) {
     coins[i].run();
   }
-  for (int i = 0; i < bats.length; i++) {
-    bats[i].run();
-  }  
 }

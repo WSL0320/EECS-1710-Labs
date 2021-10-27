@@ -6,10 +6,10 @@ class Coin {
   float speed = 1;
 
   Coin(float x, float y) {
-    position = new PVector(x, y);
     img = loadImage("coin.gif");
-
+    position = new PVector(x, y);
     speed = speed + random(2, 8);
+    
   }
 
   void update() {
@@ -24,9 +24,7 @@ class Coin {
   }
 
   void draw() {
-    if (pick) {
     image(img, position.x, position.y, 80, 80);
-    }
   }
 
   void run() {

@@ -1,35 +1,40 @@
 class Monster {
   
-  PImage bats, ghosts;
-  PVector position;
-  float speed = 3;
   boolean isLeft;
+  PImage bats, ghosts;
+  PVector position, target;
+  float speed = 0.01;
+  float tempX = 612;
+  //float tempY = 150;
   
-  Monster(float x, float y) {
+  Monster() {
+    float x1, x2;
+    float y = floor;
+    float pickSide =random(1);
+    if (pickSide < 0.5) {
+      isLeft = true;
+      x1 = -tempX;
+      x2 = width + tempX;
+    } else {
+      isLeft = false;
+      x1 = width + tempX;
+      x2 = -tempX;
+    }
     
-    position= new PVector(x, y);
+    position= new PVector(x1, y);
+    target= new PVector(x2, y);
     
-    bats = loadImage("bat.gif");
+    bats = loadImage("ghost.gif");
     ghosts = loadImage("ghost.gif");
   }
   
-  void update() {  
-    position.x -= speed;
-    if (position.x < 0 || position.x > width) {
-      speed = speed*-1;
-      position.y = random(0, 200);
-    }
-    if (position.dist(girl.position) < 5) {
-      background(255);
-      textSize(50);
-      text("GAME OVER", 320, 650); 
-      fill(255, 0, 0);
-    }
+  void update() {
+    position.lerp(target, speed);
   }
 
   void draw() {    
-    image(bats, position.x, position.y, 120, 120);
-    image(ghosts, position.x+410, floor, 120, 120);
+    image(bats, position.x, position.y, 130, 130);
+    //image(ghosts, 0, floor, 130, 130);
   }
 
   void run() {
