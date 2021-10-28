@@ -2,14 +2,12 @@ class Girl {
 
   boolean alive = true;
   PVector position, target;
-  PImage img;
   float speed, speedX1=0.2;
   float tempX, tempY;
   float jumpHeight = 100;
   int f;
 
   Girl(float x, float y) {
-    img = loadImage("rungirl.gif");
     position = new PVector(x, y);
     target = new PVector(x, jumpHeight);
     speed = 8;

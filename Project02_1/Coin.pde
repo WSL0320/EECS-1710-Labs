@@ -1,13 +1,12 @@
 class Coin {
 
-  PImage img;
   PVector position;
   boolean pick = true;
   float speed = 1;
   int coinvalue;
   int c;
   Coin(float x, float y) {
-    img = loadImage("coin.gif");
+
     position = new PVector(x, y);
     speed = speed + random(2, 7);
     coinvalue = 1;

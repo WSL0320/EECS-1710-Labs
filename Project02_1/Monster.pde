@@ -2,7 +2,6 @@ class Monster {
 
   boolean right;
   boolean end = true;
-  PImage bats;
   PVector position, target;
   float speed = 0.01;
   float tempX = 612;
@@ -25,8 +24,6 @@ class Monster {
 
     position= new PVector(x1, y);
     target= new PVector(x2, y);
-
-    bats = loadImage("bat.gif");
   }
 
   void update() {

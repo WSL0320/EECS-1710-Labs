@@ -1,6 +1,5 @@
 class Background {
 
-  PImage img;
   float bgspeed;
   float x, y;
   int b;
@@ -21,7 +20,6 @@ class Background {
   }
 
   void draw() {
-    img = loadImage("bg.gif");
     imageMode(CORNER);
     image(bgif[b], x, y);
     image(bgif[b], x+910, y);
