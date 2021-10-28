@@ -36,6 +36,7 @@ class Girl {
 
   void jump() {
     position.y -= speed;
+    f = 3;
   }
 
   void draw() {
