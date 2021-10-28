@@ -5,13 +5,14 @@ class Girl {
   PImage img;
   float speed, speedX1;
   float tempX, tempY;
-  float jumpHeight = 100;
+  float jumpHeight = 80;
 
   Girl(float x, float y) {
     img = loadImage("rungirl.gif");
     position = new PVector(x, y);
     target = new PVector(x, jumpHeight);
     speed = 8;
+    speedX1 = 8;
   }
 
   void update() {
@@ -22,13 +23,13 @@ class Girl {
       isJump = false;
     }
     if (isJump == false) {
-      if (position.y <= floor) {
+      if (position.y >= floor) {
         position.y = floor;
       } else {
-        position.y += speed;
+        position.y += speedX1;
       }
       if (position.dist(target) < 50) {
-        position.y += speed;
+        position.y += speedX1;
       }
     }
   }
