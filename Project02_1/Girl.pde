@@ -21,10 +21,11 @@ class Girl {
       isJump = false;
     }
     if (isJump == false) {
-      if (position.y <= floor) {
+      if (position.y >= floor) {
         position.y = floor;
       } else {
         position.y += speed;
+        f = 4;
       }
       if (position.dist(target) < 50) {
         position.y += speed;
