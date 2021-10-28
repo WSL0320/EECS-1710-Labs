@@ -1,21 +1,24 @@
 import gifAnimation.*;
-Gif gif;
+//Gif gif;
 Background bg;
 Girl girl;
+
+boolean isJump = false;
+
+PFont font;
 
 ArrayList<Coin> coins;
 ArrayList<Monster> bats;
 
 float start;
 float floor;
-float gravity = 0.98;
 
 int total;
 int markTime = 0;
 int batInterval = 1000;
 int catchRange = 30;
-
-boolean isJump = false;
+int fontSize= 50;
+int score = 0;
 
 void setup() {
   size(910, 512, P2D);
@@ -23,9 +26,9 @@ void setup() {
   floor = height-190;
   total = 10;
 
-  gif = new Gif(this, "rungirl.gif");
-  gif.loop();
-  gif.play();
+  //gif = new Gif(this, "rungirl.gif");
+  //gif.loop();
+  //gif.play();
 
   bg = new Background(start, start);
   girl = new Girl(start, floor);
@@ -50,10 +53,13 @@ void draw() {
   for (Monster monster : bats) {
     monster.run();
     if (girl.position.dist(monster.position) < catchRange) {
+      girl.position = monster.position;
       background(0);
-      textSize(50);
-      text("GAME OVER", width/2-100, height/2);
+      textSize(fontSize);
+      text("GAME OVER", width/2-130, height/2);
       fill(random(255));
     }
   }
+  textSize(fontSize);
+  text(score, width-50, height-50);
 }

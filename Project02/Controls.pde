@@ -1,3 +1,3 @@
 void mousePressed() {
-  girl.jump();
+  isJump = true;
 }
